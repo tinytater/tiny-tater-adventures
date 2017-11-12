@@ -38,13 +38,17 @@ public class Player : MonoBehaviour {
 		facingRight = true;
 		myRigidBody = GetComponent<Rigidbody2D> ();
 		myAnimator = GetComponent<Animator> ();
-
-
 	}
 
 	void Update()
 	{
 		HandleInput ();
+        var myPosX = transform.position.x;
+        if (myPosX <= -15.57)
+        {
+            transform.position = new Vector2(-15.57f, transform.position.y);
+        }
+
 	}
 	
 	// Update is called once per frame
@@ -78,7 +82,7 @@ public class Player : MonoBehaviour {
 
 	private void HandleInput()
 	{
-		if (Input.GetKeyDown (KeyCode.Space)) 
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) 
 		{
 			jump = true;
 		}
@@ -102,8 +106,6 @@ public class Player : MonoBehaviour {
 	{
 		jump = false;
 	}
-
-
 
 	private bool IsGrounded()
 	{
