@@ -10,6 +10,9 @@ public class ButtonManager : MonoBehaviour {
         SceneManager.LoadScene(newGameLevel);
     }
 
+
+	// Use this for initialization
+
     public void CreditsBtn(string credits)
     {
         SceneManager.LoadScene(credits);
