@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour {
 	private Rigidbody2D myRigidBody;
@@ -44,12 +46,29 @@ public class Player : MonoBehaviour {
 	{
 		HandleInput ();
         var myPosX = transform.position.x;
+        var myPosY = transform.position.y;
+
+        if (Mathf.Approximately(myPosX, 36.1f) && Mathf.Approximately(myPosY, -4.872916f)) 
+        {
+            SceneManager.LoadScene("Title");
+        }
         if (myPosX <= -15.57)
         {
             transform.position = new Vector2(-15.57f, transform.position.y);
         }
 
-	}
+        else if(myPosX>= 36.1)
+        {
+            transform.position = new Vector2(36.1f, transform.position.y);
+        }
+
+        if(myPosY <= -20.0)
+        {
+            Death();
+        }
+
+
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () 
@@ -126,5 +145,11 @@ public class Player : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public void Death()
+    {
+        myRigidBody.velocity = Vector2.zero;
+        transform.position = new Vector2(-15.24f, .05f);
+    }
 		
 }
