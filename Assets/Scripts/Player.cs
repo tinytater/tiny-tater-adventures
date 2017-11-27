@@ -105,6 +105,14 @@ public class Player : MonoBehaviour {
 		{
 			jump = true;
 		}
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Title");
+        }
+        else if(Input.GetKeyDown(KeyCode.R))
+        {
+            Death();
+        }
 	}
 
 	private void Flip(float horizontal)
@@ -149,6 +157,7 @@ public class Player : MonoBehaviour {
     public void Death()
     {
         myRigidBody.velocity = Vector2.zero;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         transform.position = new Vector2(-15.24f, .05f);
     }
 		
