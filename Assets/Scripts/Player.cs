@@ -160,6 +160,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pear")
         {
+            GameManager.Instance.CollectedPears++;
             Destroy(collision.gameObject);
         }
     }
