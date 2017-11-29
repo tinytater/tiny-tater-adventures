@@ -31,13 +31,16 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private float jumpForce;
 
+    [SerializeField]
+    public AudioClip soundFile;
+
 	// Use this for initialization.
 	void Start()
 	{
 		facingRight = true;
 		myRigidBody = GetComponent<Rigidbody2D>();
 		myAnimator = GetComponent<Animator>();
-	}
+    }
 
 	void Update()
 	{
@@ -47,7 +50,14 @@ public class Player : MonoBehaviour
 
         if (Mathf.Approximately(myPosX, 36.1f) && Mathf.Approximately(myPosY, -4.872916f)) 
         {
-            SceneManager.LoadScene("Title");
+            if (GameManager.Instance.CollectedPears == 3)
+            {
+                SceneManager.LoadScene("Good Ending");
+            }
+            else
+            {
+                SceneManager.LoadScene("Bad Ending");
+            }
         }
 
         if (myPosX <= -15.57)
@@ -160,7 +170,9 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pear")
         {
+            
             GameManager.Instance.CollectedPears++;
+            AudioSource.PlayClipAtPoint(soundFile, transform.position,1.0f);
             Destroy(collision.gameObject);
         }
     }
