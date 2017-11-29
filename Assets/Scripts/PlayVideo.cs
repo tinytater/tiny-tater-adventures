@@ -47,11 +47,9 @@ public class PlayVideo : MonoBehaviour
 
         while (!videoPlayer.isPrepared)
         {
-            Debug.Log("Preparing Video");
             yield return null;
         }
 
-        Debug.Log("Done Preparing Video");
 
         image.texture = videoPlayer.texture;
 
@@ -59,15 +57,21 @@ public class PlayVideo : MonoBehaviour
 
         audioSource.Play();
 
-        Debug.Log("Playing Video");
         while (videoPlayer.isPlaying)
         {
-            Debug.LogWarning("Video Time: " + Mathf.FloorToInt((float)videoPlayer.time));
             yield return null;
         }
 
-        SceneManager.LoadScene("Title");
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Intro"))
+        {
+            image.color = (new Color(0,0,0,1));
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene("Level1");
+        }
+        else
+        {
+            SceneManager.LoadScene("Title");
+        }
 
-        Debug.Log("Done Playing Video");
     }
 }
