@@ -34,6 +34,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     public AudioClip soundFile;
 
+    [SerializeField]
+    public AudioClip deathSound;
+    public bool dead = false;
+
+    [SerializeField]
+    public int pears;
+
 	// Use this for initialization.
 	void Start()
 	{
@@ -50,7 +57,7 @@ public class Player : MonoBehaviour
 
         if (Mathf.Approximately(myPosX, 36.1f) && Mathf.Approximately(myPosY, -4.872916f)) 
         {
-            if (GameManager.Instance.CollectedPears == 3)
+            if (GameManager.Instance.CollectedPears == pears)
             {
                 SceneManager.LoadScene("Good Ending");
             }
@@ -69,8 +76,10 @@ public class Player : MonoBehaviour
             transform.position = new Vector2(36.1f, transform.position.y);
         }
 
-        if (myPosY <= -20.0)
+        if (myPosY <= -20.0 && !dead)
         {
+            dead = true;
+
             Death();
         }
     }
@@ -162,8 +171,19 @@ public class Player : MonoBehaviour
     public void Death()
     {
         myRigidBody.velocity = Vector2.zero;
+        GetComponent<AudioSource>().PlayOneShot(deathSound, 1.0f);
+        StartCoroutine(Wait(1.5f));
+        
+    }
+
+
+    IEnumerator Wait(float delayInSecs)
+    {
+        yield return new WaitForSeconds(delayInSecs);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         transform.position = new Vector2(-15.24f, .05f);
+        dead = false;
+        yield return 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -172,7 +192,7 @@ public class Player : MonoBehaviour
         {
             
             GameManager.Instance.CollectedPears++;
-            AudioSource.PlayClipAtPoint(soundFile, transform.position,1.0f);
+            GetComponent<AudioSource>().PlayOneShot(soundFile, 1.0f);
             Destroy(collision.gameObject);
         }
     }
