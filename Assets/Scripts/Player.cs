@@ -177,8 +177,9 @@ public class Player : MonoBehaviour
     public void Death()
     {
         myAnimator.Play("Death");
+        movementSpeed = 0;
         myAS.Stop();
-        myRigidBody.velocity = Vector2.zero;
+        transform.
         GetComponent<AudioSource>().PlayOneShot(deathSound, 1.0f);
         StartCoroutine(Wait(1.5f));
         
