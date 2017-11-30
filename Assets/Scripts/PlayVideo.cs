@@ -59,6 +59,11 @@ public class PlayVideo : MonoBehaviour
 
         while (videoPlayer.isPlaying)
         {
+            if(Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Intro"))
+            {
+                SceneManager.LoadScene("Level1");
+
+            }
             yield return null;
         }
 
