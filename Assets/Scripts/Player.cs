@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
         {
             
             GameManager.Instance.CollectedPears++;
-            GetComponent<AudioSource>().PlayOneShot(soundFile, 1.0f);
+            GetComponent<AudioSource>().PlayOneShot(soundFile, 0.8f);
             Destroy(collision.gameObject);
         }
     }
