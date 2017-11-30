@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pear
+  - MainAudio
   layers:
   - Default
   - TransparentFX

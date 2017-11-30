@@ -41,12 +41,18 @@ public class Player : MonoBehaviour
     [SerializeField]
     public int pears;
 
+    public AudioSource myAS;
+
+
+
 	// Use this for initialization.
 	void Start()
 	{
-		facingRight = true;
+        AudioSource[] allMyAudioSources = GetComponents<AudioSource>();
+        facingRight = true;
 		myRigidBody = GetComponent<Rigidbody2D>();
 		myAnimator = GetComponent<Animator>();
+        myAS = allMyAudioSources[1];
     }
 
 	void Update()
@@ -170,6 +176,8 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
+        myAnimator.Play("Death");
+        myAS.Stop();
         myRigidBody.velocity = Vector2.zero;
         GetComponent<AudioSource>().PlayOneShot(deathSound, 1.0f);
         StartCoroutine(Wait(1.5f));
@@ -192,8 +200,12 @@ public class Player : MonoBehaviour
         {
             
             GameManager.Instance.CollectedPears++;
-            GetComponent<AudioSource>().PlayOneShot(soundFile, 0.8f);
+            GetComponent<AudioSource>().PlayOneShot(soundFile, 0.5f);
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Flame")
+        {
+            Death();
         }
     }
 }

@@ -1804,7 +1804,7 @@ GameObject:
   - component: {fileID: 1026059076}
   m_Layer: 0
   m_Name: Audio Source
-  m_TagString: Untagged
+  m_TagString: MainAudio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1820,7 +1820,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8baa84403e3cdaa40bcc1b3c139d5752, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.234
+  m_Volume: 0.539
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2291,6 +2291,7 @@ GameObject:
   - component: {fileID: 1244268321}
   - component: {fileID: 1244268322}
   - component: {fileID: 1244268323}
+  - component: {fileID: 1244268324}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2415,10 +2416,11 @@ MonoBehaviour:
     m_Bits: 4294967295
   airControl: 1
   jumpForce: 300
-  soundFile: {fileID: 8300000, guid: 426035c1d85bdc04ebb7e70c04011055, type: 3}
+  soundFile: {fileID: 8300000, guid: e2a5386c1dd69f24db47878429c00057, type: 3}
   deathSound: {fileID: 8300000, guid: e5493ec40fe561e489c2b2387176eda2, type: 3}
   dead: 0
   pears: 10
+  anim: {fileID: 0}
 --- !u!61 &1244268322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2524,6 +2526,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!111 &1244268324
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244268316}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1275310666
 Prefab:
   m_ObjectHideFlags: 0
