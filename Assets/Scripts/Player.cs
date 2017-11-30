@@ -43,21 +43,43 @@ public class Player : MonoBehaviour
 
     public AudioSource myAS;
 
+    private string[] cheatCode;
+    private int index;
 
 
-	// Use this for initialization.
-	void Start()
+
+    // Use this for initialization.
+    void Start()
 	{
         AudioSource[] allMyAudioSources = GetComponents<AudioSource>();
         facingRight = true;
 		myRigidBody = GetComponent<Rigidbody2D>();
 		myAnimator = GetComponent<Animator>();
         myAS = allMyAudioSources[1];
+        cheatCode = new string[] { "up", "up", "down","down","left","right","b","a" };
+        index = 0;
     }
 
 	void Update()
 	{
-		HandleInput();
+        if (Input.anyKeyDown)
+        {
+            if (Input.GetKeyDown(cheatCode[index]))
+            {
+                index++;
+            }
+            else
+            {
+                index = 0;
+            }
+        }
+
+
+        if (index == cheatCode.Length)
+        {
+            SceneManager.LoadScene("Credits");
+        }
+        HandleInput();
         var myPosX = transform.position.x;
         var myPosY = transform.position.y;
 
@@ -204,7 +226,7 @@ public class Player : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(soundFile, 0.5f);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == "Flame")
+        if (collision.gameObject.tag == "Enemy")
         {
             Death();
         }
