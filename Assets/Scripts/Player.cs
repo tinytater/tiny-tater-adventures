@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Credits");
         }
+
         HandleInput();
         var myPosX = transform.position.x;
         var myPosY = transform.position.y;
