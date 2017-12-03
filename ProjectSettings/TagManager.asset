@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pear
+  - MainAudio
+  - Flame
+  - Enemy
   layers:
   - Default
   - TransparentFX
