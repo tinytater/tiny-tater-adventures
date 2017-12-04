@@ -107,7 +107,6 @@ public class Player : MonoBehaviour
 
         if (myPosY <= -20.0 && !dead)
         {
-            dead = true;
 
             Death();
         }
@@ -154,6 +153,7 @@ public class Player : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.R))
         {
+
             Death();
         }
 	}
@@ -202,8 +202,11 @@ public class Player : MonoBehaviour
         myAnimator.Play("Death");
         movementSpeed = 0;
         myAS.Stop();
-        transform.
-        GetComponent<AudioSource>().PlayOneShot(deathSound, 1.0f);
+        if (!dead)
+        {
+            GetComponent<AudioSource>().PlayOneShot(deathSound, 1.0f);
+            dead = true;
+        }
         StartCoroutine(Wait(1.5f));
         
     }
