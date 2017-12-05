@@ -3,12 +3,16 @@ using System.Collections;
 
 public class EnemyMove : MonoBehaviour
 {
+    [SerializeField]
+    public int deltaX;
+    [SerializeField]
+    public int deltaY;
     private Vector3 pointB;
 
     IEnumerator Start()
     {
         var pointA = transform.position;
-        var pointB = new Vector3(pointA.x + 3, pointA.y, 0);
+        var pointB = new Vector3(pointA.x+deltaX , pointA.y+deltaY, 0);
         while (true)
         {
             yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
