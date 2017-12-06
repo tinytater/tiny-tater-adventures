@@ -207,6 +207,7 @@ public class Player : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(deathSound, 1.0f);
             dead = true;
         }
+
         StartCoroutine(Wait(1.5f));
         
     }
