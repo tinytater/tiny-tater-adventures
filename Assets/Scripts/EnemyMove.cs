@@ -9,6 +9,7 @@ public class EnemyMove : MonoBehaviour
     public int deltaY;
     private Vector3 pointB;
 
+
     IEnumerator Start()
     {
         var pointA = transform.position;
@@ -16,7 +17,10 @@ public class EnemyMove : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
+            transform.Rotate(0, 180, 0);
             yield return StartCoroutine(MoveObject(transform, pointB, pointA, 3.0f));
+            transform.Rotate(0, 180, 0);
+
         }
     }
 
