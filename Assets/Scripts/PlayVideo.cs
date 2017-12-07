@@ -75,6 +75,8 @@ public class PlayVideo : MonoBehaviour
         }
         else
         {
+            image.color = (new Color(0, 0, 0, 1));
+            yield return new WaitForSeconds(1.0f);
             SceneManager.LoadScene("Title");
         }
 
