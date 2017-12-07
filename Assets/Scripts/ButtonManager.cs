@@ -26,9 +26,9 @@ public class ButtonManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape)) && (SceneManager.GetActiveScene()==SceneManager.GetSceneByName("Bad Ending")|| (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Good Ending"))))
+        if((SceneManager.GetActiveScene()==SceneManager.GetSceneByName("Bad Ending")|| (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Good Ending"))))
         {
-            SceneManager.LoadScene("Title");
+            StartCoroutine(Wait(3.0f));
         }
         else if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -36,5 +36,13 @@ public class ButtonManager : MonoBehaviour {
         }
 
 
+    }
+
+    IEnumerator Wait(float delayInSecs)
+    {
+        yield return new WaitForSeconds(delayInSecs);
+        SceneManager.LoadScene("Credits");
+
+        yield return 0;
     }
 }

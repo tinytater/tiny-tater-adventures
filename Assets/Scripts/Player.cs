@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
 
         if (index == cheatCode.Length)
         {
-            SceneManager.LoadScene("Credits");
+            SceneManager.LoadScene("Good Ending");
         }
 
         HandleInput();
