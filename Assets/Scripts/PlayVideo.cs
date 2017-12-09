@@ -53,6 +53,7 @@ public class PlayVideo : MonoBehaviour
 
         image.texture = videoPlayer.texture;
 
+        videoPlayer.playbackSpeed = 0.70f;
         videoPlayer.Play();
 
         audioSource.Play();
