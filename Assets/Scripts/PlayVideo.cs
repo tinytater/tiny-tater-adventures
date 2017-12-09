@@ -59,13 +59,7 @@ public class PlayVideo : MonoBehaviour
 
         while (videoPlayer.isPlaying)
         {
-            Debug.Log(videoPlayer.frame);
-            if(videoPlayer.frame == 163 || videoPlayer.frame==315)
-            {
-                videoPlayer.Pause();
-                yield return new WaitForSeconds(1);
-                videoPlayer.Play();
-            }
+
             if(Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Intro"))
             {
                 SceneManager.LoadScene("Level1");

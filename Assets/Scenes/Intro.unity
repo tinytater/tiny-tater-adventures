@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 549989127}
-  videoToPlay: {fileID: 32900000, guid: 63e95d7666afe9344a611657fc6196f1, type: 3}
+  videoToPlay: {fileID: 32900000, guid: 3734923e2e0df8547b533afdf9c5e208, type: 3}
 --- !u!114 &549989127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,9 +307,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3c82f39de0a0ee34aab87d9c6a1e867f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.84
+  m_Volume: 0.764
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

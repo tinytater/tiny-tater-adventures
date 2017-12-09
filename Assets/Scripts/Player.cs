@@ -212,7 +212,6 @@ public class Player : MonoBehaviour
         
     }
 
-
     IEnumerator Wait(float delayInSecs)
     {
         yield return new WaitForSeconds(delayInSecs);
